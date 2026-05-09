@@ -1,0 +1,595 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap');
+
+/* ===========================
+   RESET & BASE
+=========================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --preto: #0a0a0a;
+  --preto-fundo: #111010;
+  --cinza-escuro: #1c1c1c;
+  --cinza-medio: #2a2a2a;
+  --cinza-borda: #3a3a3a;
+  --ouro: #c8a96e;
+  --ouro-claro: #e8c98a;
+  --ouro-escuro: #9a7a45;
+  --creme: #f5f0e8;
+  --branco: #ffffff;
+  --texto-muted: #888880;
+  --vermelho: #c0392b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--preto-fundo);
+  color: var(--creme);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+header {
+  background-color: var(--preto);
+  border-bottom: 1px solid var(--ouro);
+  text-align: center;
+  padding: 3.5rem 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(200, 169, 110, 0.03) 3px,
+    rgba(200, 169, 110, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ouro);
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+header p {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--texto-muted);
+  font-weight: 400;
+}
+
+/* ===========================
+   NAV
+=========================== */
+
+nav {
+  background-color: var(--cinza-escuro);
+  border-bottom: 1px solid var(--cinza-borda);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--texto-muted);
+  text-decoration: none;
+  padding: 1.1rem 2.2rem;
+  border-right: 1px solid var(--cinza-borda);
+  transition: color 0.25s, background-color 0.25s;
+  position: relative;
+}
+
+nav a:first-child {
+  border-left: 1px solid var(--cinza-borda);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--ouro);
+  transform: scaleX(0);
+  transition: transform 0.25s;
+}
+
+nav a:hover {
+  color: var(--ouro);
+  background-color: rgba(200, 169, 110, 0.06);
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ===========================
+   SEÇÕES GERAIS
+=========================== */
+
+section {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--ouro);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero {
+  background: var(--preto);
+  max-width: 100%;
+  padding: 4rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--cinza-borda);
+}
+
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--creme);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.hero p {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ouro);
+  font-weight: 400;
+}
+
+/* ===========================
+   FILMES EM CARTAZ
+=========================== */
+
+#filmes {
+  background-color: var(--preto-fundo);
+  max-width: 100%;
+  padding: 4rem 2rem;
+}
+
+#filmes h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--texto-muted);
+}
+
+.carrossel {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5rem 1rem 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ouro-escuro) var(--cinza-medio);
+  cursor: grab;
+}
+
+.carrossel::-webkit-scrollbar {
+  height: 4px;
+}
+
+.carrossel::-webkit-scrollbar-track {
+  background: var(--cinza-medio);
+}
+
+.carrossel::-webkit-scrollbar-thumb {
+  background: var(--ouro-escuro);
+  border-radius: 2px;
+}
+
+.card-filme {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  background: var(--cinza-escuro);
+  border: 1px solid var(--cinza-borda);
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.card-filme::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+
+.card-filme:hover {
+  transform: translateY(-6px);
+  border-color: var(--ouro-escuro);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+}
+
+.card-filme:hover::before {
+  opacity: 1;
+}
+
+.card-filme img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.92) contrast(1.05);
+  transition: filter 0.3s;
+}
+
+.card-filme:hover img {
+  filter: brightness(1) contrast(1.05);
+}
+
+.card-filme h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--creme);
+  padding: 1rem 1.2rem 0.4rem;
+  line-height: 1.3;
+}
+
+.card-filme p {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem;
+  color: var(--texto-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 1.2rem 1.2rem;
+}
+.sobre-mim {
+  background-color: var(--preto);
+  max-width: 100%;
+  padding: 5rem 2rem;
+  border-top: 1px solid var(--cinza-borda);
+  border-bottom: 1px solid var(--cinza-borda);
+}
+
+.sobre-mim h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  font-style: italic;
+  color: var(--ouro);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.04em;
+}
+
+.sobre-mim > p {
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.90rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--texto-muted);
+  margin-bottom: 2.5rem;
+}
+
+.carrossel-fotos {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5rem 0 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ouro-escuro) var(--cinza-medio);
+  margin-bottom: 3.5rem;
+}
+
+.carrossel-fotos::-webkit-scrollbar {
+  height: 4px;
+}
+
+.carrossel-fotos::-webkit-scrollbar-track {
+  background: var(--cinza-medio);
+}
+
+.carrossel-fotos::-webkit-scrollbar-thumb {
+  background: var(--ouro-escuro);
+  border-radius: 2px;
+}
+
+.foto-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--cinza-borda);
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.foto-card:hover {
+  transform: scale(1.02);
+  border-color: var(--ouro-escuro);
+}
+
+.foto-card img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  display: block;
+  filter: sepia(0.15) brightness(0.9) contrast(1.08);
+  transition: filter 0.4s;
+}
+
+.foto-card:hover img {
+  filter: sepia(0) brightness(1) contrast(1.05);
+}
+
+.sobre-mim h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ouro);
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+  padding-top: 1rem;
+  border-top: 1px solid var(--cinza-borda);
+}
+
+.sobre-mim > p:last-of-type {
+  text-align: left;
+  font-size: 0.95rem;
+  color: var(--texto-muted);
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  max-width: 800px;
+  font-weight: 300;
+}
+.carrinho {
+  background-color: var(--preto-fundo);
+  max-width: 100%;
+  padding: 5rem 2rem;
+}
+
+.carrinho h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--ouro);
+  text-align: center;
+  margin-bottom: 0.4rem;
+  text-transform: lowercase;
+}
+
+.carrinho > p {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--texto-muted);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+#lista-votos {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  min-height: 60px;
+}
+
+#lista-votos li {
+  background: var(--cinza-escuro);
+  border: 1px solid var(--cinza-borda);
+  border-left: 3px solid var(--ouro);
+  padding: 0.9rem 1.2rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: var(--creme);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: entrar 0.3s ease;
+}
+
+@keyframes entrar {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+#finalizar-voto {
+  display: block;
+  margin: 0 auto;
+  background: transparent;
+  border: 1px solid var(--ouro);
+  color: var(--ouro);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+#finalizar-voto:hover {
+  background: var(--ouro);
+  color: var(--preto);
+}
+
+footer {
+  background: var(--preto);
+  border-top: 1px solid var(--ouro);
+  text-align: center;
+  padding: 2rem;
+}
+
+footer p {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--texto-muted);
+}
+
+/* ===========================
+   RESPONSIVO
+=========================== */
+
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  nav a {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.65rem;
+    border: none;
+    border-bottom: 1px solid var(--cinza-borda);
+    flex: 1 1 33%;
+    text-align: center;
+  }
+
+  nav a:first-child { border-left: none; }
+
+  .card-filme {
+    flex: 0 0 220px;
+  }
+
+  .foto-card {
+    flex: 0 0 240px;
+  }
+
+  .foto-card img {
+    height: 320px;
+  }
+}
+
+#toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  visibility: hidden;
+  background: var(--cinza-escuro);
+  border: 1px solid var(--ouro);
+  border-left: 4px solid var(--ouro);
+  color: var(--creme);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  padding: 0.9rem 1.6rem 0.9rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  z-index: 999;
+  white-space: nowrap;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0s 0.35s;
+  pointer-events: none;
+}
+
+#toast.visivel {
+  transform: translateX(-50%) translateY(0);
+  visibility: visible;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0s 0s;
+}
+
+#toast.removido {
+  border-color: var(--cinza-borda);
+  border-left-color: var(--texto-muted);
+  color: var(--texto-muted);
+}
+
+#toast .toast-icone {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.card-filme.selecionado {
+  border-color: var(--ouro);
+  box-shadow: 0 0 0 2px var(--ouro-escuro), 0 16px 40px rgba(0,0,0,0.6);
+}
+
+.card-filme.selecionado::before {
+  opacity: 1;
+}
+
+.card-filme .badge-voto {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--ouro);
+  color: var(--preto);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  z-index: 2;
+}
