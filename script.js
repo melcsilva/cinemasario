@@ -106,9 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mostrarToast('Redirecionando para o WhatsApp...');
 
-        setTimeout(() => {
-            window.open(link, '_blank');
-        }, 1200);
+        window.location.href = link;
 
     });
 });
